@@ -52,12 +52,21 @@ public class Main {
         int indexCours;
 
         Scanner input = new Scanner(System.in);
-        System.out.println("\n--Entrez les numero des étudiants commencer par le 0 ---");
+        System.out.println("\n--Entrez les numero des étudiants entre par le 0 et 3 ---");
         numeroEtudiant=input.nextInt();
-        System.out.println("Entrez le numero de matiere commencer par 0");
+        System.out.println("Entrez le numero de matiere entre 0 et 4");
         indexCours=input.nextInt();
         System.out.println("Entrez le  note de "+matieres[indexCours]+":");
-        notes[numeroEtudiant][indexCours]= input.nextDouble();
+        if(notes[numeroEtudiant][indexCours]==0){
+            notes[numeroEtudiant][indexCours]= input.nextDouble();
+        }
+        else {
+            System.out.println("Erreur le note de matiere "+matieres[indexCours]+" " +
+                                 "deja rempli donc vous allez au modifier note");
+
+
+        }
+
 //        int NB_ETUDIANTS = notes.length; // 4
 //        int NB_NOTES = notes[0].length; // 5
 
@@ -85,7 +94,6 @@ public class Main {
 //            return;
 //        }
         System.out.println("Entrez le numero des etudiants que vous regardez");
-
         int voirNoteEtudiant;
         voirNoteEtudiant=input.nextInt();
 //        for (int i = 1; i < 5; i++) {
