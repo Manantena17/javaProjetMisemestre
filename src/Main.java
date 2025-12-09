@@ -2,7 +2,9 @@ import java.util.Scanner;
 public class Main {
     private static double[][] notes = new double[4][5];
 //    private static int nombreEtudiantsSaisis = 0;
-    private static String [] matieres={"Java Oriente Objet","C#","PHP","Teleinformatique","Python" };
+    private static String [] matieres={"Java Oriente Objet","C#","PHP",
+        "Teleinformatique","Python" };
+    private static String [] nom = new String[4];
     public static void main(String[] args) {
 
         menu();
@@ -41,8 +43,8 @@ public class Main {
                 }
             } catch (java.util.InputMismatchException e) {
                 System.out.println("Erreur: Veuillez entrer un nombre valide.");
-                input.next(); // Consomme l'entrée incorrecte
-                choix = -1; // Réinitialise le choix pour continuer la boucle
+                input.next();
+                choix = -1;
             }
         }
     }
@@ -54,6 +56,9 @@ public class Main {
         Scanner input = new Scanner(System.in);
         System.out.println("\n--Entrez les numero des étudiants entre par le 0 et 3 ---");
         numeroEtudiant=input.nextInt();
+        System.out.println("Entrez le nom etudiant");
+        input.nextLine();
+        nom[numeroEtudiant]=input.nextLine();
         System.out.println("Entrez le numero de matiere entre 0 et 4");
         indexCours=input.nextInt();
         System.out.println("Entrez le  note de "+matieres[indexCours]+":");
@@ -61,57 +66,20 @@ public class Main {
             notes[numeroEtudiant][indexCours]= input.nextDouble();
         }
         else {
-            System.out.println("Erreur le note de matiere "+matieres[indexCours]+" " +
-                                 "deja rempli donc vous allez au modifier note");
-
-
+            System.out.println("Erreur le note de matiere " + matieres[indexCours] + " " +
+                    "deja rempli donc vous allez au modifier note");
         }
-
-//        int NB_ETUDIANTS = notes.length; // 4
-//        int NB_NOTES = notes[0].length; // 5
-
-//        for (int i = 0; i<4; i++) {
-//             Affichage du numéro de l'étudiant
-//            System.out.println("\nSaisie pour le numero l'étudiant " + (i+1));
-//            notes[i][i]=input.nextDouble();
-//             On pourrait demander le nom de l'étudiant ici, mais on se contente des notes.
-
-//            for (int j =0; j<5; j++) {
-//                System.out.print("Entrez la note " + (j + 1) + " (entre 0 et 20) : ");
-//                notes[numeroEtudiant][j]=input.nextDouble();
-//              //  double noteSaisie = input.nextDouble();
-//                // Stockage de la note dans le tableau global statique 'notes'
-//               // notes[i][j] = noteSaisie;
-//            }
-
-//        nombreEtudiantsSaisis = 4;
     }
-
     public static void afficherResultats() {
         Scanner input = new Scanner(System.in);
-//        if (nombreEtudiantsSaisis == 0) {
-//            System.out.println(" Aucune note n'a été saisie. Veuillez utiliser l'option 1 d'abord.");
-//            return;
-//        }
         System.out.println("Entrez le numero des etudiants que vous regardez");
         int voirNoteEtudiant;
         voirNoteEtudiant=input.nextInt();
-//        for (int i = 1; i < 5; i++) {
-//            double sommeNotes = 0.0;
-//            System.out.print("Étudiant " + (i + 1) + " | Notes : [");
-        System.out.println("Le note de l'etudieant de numero "+voirNoteEtudiant+"sont");
+        System.out.println("Le note de " +nom[voirNoteEtudiant]+ " sont");
+        System.out.println(nom[0]);
             for (int j = 0; j < 5; j++) {
-                double note = notes[voirNoteEtudiant][j];
                 System.out.println(matieres[j]+"="+ notes[voirNoteEtudiant][j]);
-                //System.out.println(note + (j < 5 - 1 ? ", " : "")); // Ajoute une virgule sauf pour la dernière note
-//                sommeNotes += note;
             }
-
-
-//            double moyenne = sommeNotes / 5;
-//            // Affichage de la moyenne avec deux décimales
-//            System.out.printf("] | Moyenne: %.2f%n", moyenne);
-//        }
     }
     public static void modifierNotes(){
         Scanner input = new Scanner(System.in);
@@ -125,13 +93,6 @@ public class Main {
         System.out.println("Entrez le nouveaux note de "+matieres[modifyNote]);
         note=input.nextDouble();
         notes[numeroEtudiant][modifyNote]=note;
-//        for (int i=0;i<5;i++){
-//
-//            note=input.nextDouble();
-//            notes[modifyNote][i]=note;
-//
-//        }
-
     }
     public static void effacernote(){
         Scanner input = new Scanner(System.in);
