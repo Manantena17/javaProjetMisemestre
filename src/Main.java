@@ -102,13 +102,13 @@ public class Main {
         System.out.println("Entrez le id de matiere ");
         modifyNote = input.nextInt();
         double note;
-        if(nom[numeroEtudiant]!=null&&notes[numeroEtudiant][modifyNote]!=0){
+        if(nom[numeroEtudiant]!=null && notes[numeroEtudiant][modifyNote]!=0){
             System.out.println("Entrez le nouveaux note de " + nom[numeroEtudiant] +
                     " " + matieres[modifyNote]);
             note = input.nextDouble();
             notes[numeroEtudiant][modifyNote] = note;
         }else {
-            System.out.println("Aucune etudiant correspondent a la numero");
+            System.out.println("Aucune etudiant ou note correspondent a la numero");
         }
 
     }
@@ -121,7 +121,7 @@ public class Main {
         deleteNote=input.nextInt();
         System.out.println("entrez le numero de cours effacer ");
         noteEffacer= input.nextInt();
-        if(nom[deleteNote]!=null&&notes[deleteNote][noteEffacer]!=0){
+        if(nom[deleteNote]!=null && notes[deleteNote][noteEffacer]!=0){
             double note;
             note =0;
             notes[deleteNote][noteEffacer]=note;
