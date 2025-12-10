@@ -55,7 +55,7 @@ public class Main {
         int indexCours;
 
         Scanner input = new Scanner(System.in);
-        System.out.println("\n--Entrez les numero des étudiants entre par le 1 et 4 ---");
+        System.out.println("\n--Entrez les numero des étudiants entre par le 0 et 3---");
         numeroEtudiant = input.nextInt();
         if (nom[numeroEtudiant] == null || notes[numeroEtudiant][0] == 0
                 || notes[numeroEtudiant][1] == 0
@@ -67,7 +67,7 @@ public class Main {
                 input.nextLine();
                 nom[numeroEtudiant] = input.nextLine();
             }
-            System.out.println("Entrez le numero de matiere entre 1 et 5");
+            System.out.println("Entrez le numero de matiere entre 0 et 4");
             indexCours = input.nextInt();
             System.out.println("Entrez le  note de " + nom[numeroEtudiant] + "  "
                     + matieres[indexCours] + ":");
@@ -121,10 +121,15 @@ public class Main {
         deleteNote=input.nextInt();
         System.out.println("entrez le numero de cours effacer ");
         noteEffacer= input.nextInt();
-        double note;
-        note =0;
-        notes[deleteNote][noteEffacer]=note;
-        System.out.println("Suppression reussie le note de "+nom[deleteNote] +" "+
-                matieres[noteEffacer]);
+        if(nom[deleteNote]!=null&&notes[deleteNote][noteEffacer]!=0){
+            double note;
+            note =0;
+            notes[deleteNote][noteEffacer]=note;
+            System.out.println("Suppression reussie le note de "+nom[deleteNote] +" "+
+                    matieres[noteEffacer]);
+        }else {
+            System.out.println("Veulliez creer l'etudiant ou le note");
+        }
+
     }
 }
