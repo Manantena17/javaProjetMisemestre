@@ -1,24 +1,26 @@
 import java.util.Scanner;
 public class Main {
-    private static double[][] notes = new double[4][5];
+    private static double[][] notes = new double[50][5];
     private static String[] matieres = {"Java Oriente Objet", "C#", "PHP",
             "Teleinformatique", "Python"};
     private static String[] nom = new String[4];
 
     public static void main(String[] args) {
-
+        System.out.println("Bienvenue dans le projet de Manantena");
+        System.out.println("Gestion des 50 Etudiants");
         menu();
     }
     public static void menu() {
         Scanner input = new Scanner(System.in);
         int choix = -1;
         while (choix != 5) {
+
             System.out.println("\n--- MENU ---");
-            System.out.println("1 - Saisie des notes de 4 étudiants");
-            System.out.println("2 - Afficher les notes et la moyenne des étudiants");
-            System.out.println("3 - Modifier les notes");
-            System.out.println("4 - Effacer les notes");
-            System.out.println("5 - Quitter");
+            System.out.println("1 - Creer des etudiants ou remplir le notes complet");
+            System.out.println("2 - Afficher les etudiants");
+            System.out.println("3 - Modifier les notes des etudiants");
+            System.out.println("4 - Effacer les notes des etudiants");
+            System.out.println("5 - Quitter le programme");
             System.out.print("Entrez votre choix : ");
 
             try {
@@ -55,9 +57,10 @@ public class Main {
         int indexCours;
 
         Scanner input = new Scanner(System.in);
-        System.out.println("\n--Entrez les numero des étudiants entre par le 0 et 3---");
+        System.out.println("\n--Entrez les numero des étudiants entre  0 et 49  comme ID---");
         numeroEtudiant = input.nextInt();
-        if (nom[numeroEtudiant] == null || notes[numeroEtudiant][0] == 0
+        if (nom[numeroEtudiant] == null
+                || notes[numeroEtudiant][0] == 0
                 || notes[numeroEtudiant][1] == 0
                 || notes[numeroEtudiant][2] == 0
                 || notes[numeroEtudiant][3] == 0
@@ -72,7 +75,16 @@ public class Main {
             System.out.println("Entrez le  note de " + nom[numeroEtudiant] + "  "
                     + matieres[indexCours] + ":");
             if (notes[numeroEtudiant][indexCours] == 0) {
-                notes[numeroEtudiant][indexCours] = input.nextDouble();
+                do{
+                    if( notes[numeroEtudiant][indexCours]>20||
+                            notes[numeroEtudiant][indexCours]<0){
+                        System.out.println("Eentrez note compris entre 0 et 20");
+                    }
+
+                    notes[numeroEtudiant][indexCours] = input.nextDouble();
+                }while ( notes[numeroEtudiant][indexCours]>20||
+                        notes[numeroEtudiant][indexCours]<0);
+
             } else {
                 System.out.println("Erreur le note de matiere " + matieres[indexCours] + " " +
                         "deja rempli donc vous allez au modifier note");
@@ -87,10 +99,19 @@ public class Main {
         System.out.println("Entrez le numero des etudiants que vous regardez");
         int voirNoteEtudiant;
         voirNoteEtudiant = input.nextInt();
-        System.out.println("Le note de " + nom[voirNoteEtudiant] + " sont");
-        for (int j = 0; j < 5; j++) {
-            System.out.println(matieres[j] + "=" + notes[voirNoteEtudiant][j]);
+        if(nom[voirNoteEtudiant]!=null){
+            System.out.println("Le note de " + nom[voirNoteEtudiant] + " sont");
+            for (int j = 0; j < 5; j++) {
+                if(notes[voirNoteEtudiant][j]==0){
+                    System.out.print("Veuillez remplir le note de ");
+                }
+                System.out.println(matieres[j] + "=" + notes[voirNoteEtudiant][j]);
+
+            }
+        }else{
+            System.out.println("Veuillez creer etudiant correspond a la ID ="+voirNoteEtudiant);
         }
+
     }
 
     public static void modifierNotes() {
@@ -108,7 +129,7 @@ public class Main {
             note = input.nextDouble();
             notes[numeroEtudiant][modifyNote] = note;
         }else {
-            System.out.println("Aucune etudiant ou note correspondent a la numero");
+            System.out.println("Aucune etudiant ou note correspondent a la ID ="+numeroEtudiant);
         }
 
     }
